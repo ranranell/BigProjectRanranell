@@ -203,7 +203,7 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="28,26,0,0" TextWrapping="Wrap" Text="Имя персонажа" VerticalAlignment="Top" Width="432" Background="#FFF4A8A8" Foreground="Black"
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="139,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="321" Background="#FFF4A8A8" Foreground="Black"
                FontFamily="Arial"
                FontSize="15"
                FontWeight="Bold">
@@ -247,7 +247,7 @@
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <TextBox x:Name="number__of__tokens" HorizontalAlignment="Left" Height="23" Margin="541,26,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" BorderBrush="#FFF4A8A8" RenderTransformOrigin="0.655,0.545"
+        <TextBox x:Name="number__of__tokens" HorizontalAlignment="Left" Height="23" Margin="541,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" BorderBrush="#FFF4A8A8" RenderTransformOrigin="0.655,0.545"
                 FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
@@ -304,6 +304,10 @@
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Bold" Background="#FFF4A8A8"/>
+        <Label Content="Имя персонажа:" HorizontalAlignment="Left" Height="23" Margin="28,26,0,0" VerticalAlignment="Top" Width="106"
+                FontFamily="Arial"
+               FontSize="12"
+               FontWeight="Bold"/>
 
     </Grid>
 </Window>

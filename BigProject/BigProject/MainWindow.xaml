@@ -173,6 +173,31 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="minus_button_style" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="18" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true"/>
+                            <Trigger Property="IsMouseOver" Value="true"/>
+                            <Trigger Property="IsPressed" Value="true"/>
+                            <Trigger Property="IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid x:Name="Add">
         <Button x:Name="strength__add" Content="+" HorizontalAlignment="Left" Margin="171,108,0,0" VerticalAlignment="Top" Width="37" Height="37" Style="{DynamicResource ButtonStyle1}" RenderTransformOrigin="0.192,0.776" Background="#FFF4A8A8" Click="strength__add_Click"/>
@@ -211,35 +236,35 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlTextColorKey}}"/>
             </TextBox.BorderBrush>
         </TextBox>
-        <Label x:Name="HP" Content="HP:" HorizontalAlignment="Left" Margin="244,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="HP" Content="HP:" HorizontalAlignment="Left" Margin="289,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="MANA" Content="MANA:" HorizontalAlignment="Left" Margin="244,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="MANA" Content="MANA:" HorizontalAlignment="Left" Margin="289,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="P__DAMAGE" Content="p.damage:" HorizontalAlignment="Left" Margin="244,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="P__DAMAGE" Content="p.damage:" HorizontalAlignment="Left" Margin="289,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="M__DAMAGE" Content="m.damage:" HorizontalAlignment="Left" Margin="244,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="M__DAMAGE" Content="m.damage:" HorizontalAlignment="Left" Margin="289,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="CRT__DAMAGE" Content="crt.damage:" HorizontalAlignment="Left" Margin="375,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="CRT__DAMAGE" Content="crt.damage:" HorizontalAlignment="Left" Margin="420,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="ARMOR" Content="armor:" HorizontalAlignment="Left" Margin="375,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="ARMOR" Content="armor:" HorizontalAlignment="Left" Margin="420,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="M__DEFENCE" Content="m.defence:" HorizontalAlignment="Left" Margin="375,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="M__DEFENCE" Content="m.defence:" HorizontalAlignment="Left" Margin="420,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <Label x:Name="CRT__CHANCE" Content="crt.chance:" HorizontalAlignment="Left" Margin="375,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
+        <Label x:Name="CRT__CHANCE" Content="crt.chance:" HorizontalAlignment="Left" Margin="420,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.54,2.137"
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
@@ -247,7 +272,7 @@
                FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
-        <TextBox x:Name="number__of__tokens" HorizontalAlignment="Left" Height="23" Margin="541,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" BorderBrush="#FFF4A8A8" RenderTransformOrigin="0.655,0.545"
+        <TextBox x:Name="number__of__tokens" HorizontalAlignment="Left" Height="23" Margin="541,26,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" BorderBrush="#FFF4A8A8" RenderTransformOrigin="0.655,0.545"
                 FontFamily="Arial"
                FontSize="12"
                FontWeight="Black"/>
@@ -267,35 +292,35 @@
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="hp" Content="0" HorizontalAlignment="Left" Margin="308,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="hp" Content="0" HorizontalAlignment="Left" Margin="353,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="mana" Content="0" HorizontalAlignment="Left" Margin="308,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="mana" Content="0" HorizontalAlignment="Left" Margin="353,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="p__damage" Content="0" HorizontalAlignment="Left" Margin="327,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="p__damage" Content="0" HorizontalAlignment="Left" Margin="372,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="m__damage" Content="0" HorizontalAlignment="Left" Margin="327,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="m__damage" Content="0" HorizontalAlignment="Left" Margin="372,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="crt__damage" Content="0" HorizontalAlignment="Left" Margin="485,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="crt__damage" Content="0" HorizontalAlignment="Left" Margin="530,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="armor" Content="0" HorizontalAlignment="Left" Margin="448,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="armor" Content="0" HorizontalAlignment="Left" Margin="493,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="m__defence" Content="0" HorizontalAlignment="Left" Margin="485,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="m__defence" Content="0" HorizontalAlignment="Left" Margin="530,207,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
-        <Label x:Name="crt__chance" Content="0" HorizontalAlignment="Left" Margin="485,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
+        <Label x:Name="crt__chance" Content="0" HorizontalAlignment="Left" Margin="530,257,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.133,-0.069" Width="36" Height="24"
             FontFamily="Arial"
             FontSize="12"
             FontWeight="Black"/>
@@ -308,6 +333,15 @@
                 FontFamily="Arial"
                FontSize="12"
                FontWeight="Bold"/>
+        <Button x:Name="minus" Content="-" HorizontalAlignment="Left" Margin="225,108,0,0" VerticalAlignment="Top" Width="37" Height="37" Background="#FFF4A8A8" Style="{DynamicResource minus_button_style}" Click="minus_Click"/>
+        <Button x:Name="minus_Copy" Content="-" HorizontalAlignment="Left" Margin="225,150,0,0" VerticalAlignment="Top" Width="37" Height="37" Background="#FFF4A8A8" Style="{DynamicResource minus_button_style}" Click="minus_Copy_Click"/>
+        <Button x:Name="minus_Copy1" Content="-" HorizontalAlignment="Left" Margin="225,200,0,0" VerticalAlignment="Top" Width="37" Height="37" Background="#FFF4A8A8" Style="{DynamicResource minus_button_style}"/>
+        <Button x:Name="minus_Copy2" Content="-" HorizontalAlignment="Left" Margin="225,200,0,0" VerticalAlignment="Top" Width="37" Height="37" Background="#FFF4A8A8" Style="{DynamicResource minus_button_style}" Click="minus_Copy2_Click"/>
+        <Button x:Name="minus_Copy3" Content="-" HorizontalAlignment="Left" Margin="225,250,0,0" VerticalAlignment="Top" Width="37" Height="37" Background="#FFF4A8A8" Style="{DynamicResource minus_button_style}" Click="minus_Copy3_Click_1"/>
+        <Button x:Name="OneHundred_button" Content="100" HorizontalAlignment="Left" Margin="493,54,0,0" VerticalAlignment="Top" Width="52" Background="#FFF4A8A8" Click="OneHundred_button_Click"/>
+        <Button x:Name="FiveHundred_button" Content="500" HorizontalAlignment="Left" Margin="550,54,0,0" VerticalAlignment="Top" Width="52" Background="#FFF4A8A8" Click="FiveHundred_button_Click"/>
+        <Button x:Name="OneThousand_button" Content="1000" HorizontalAlignment="Left" Margin="607,54,0,0" VerticalAlignment="Top" Width="52" Background="#FFF4A8A8" Click="OneThousand_button_Click"/>
+        <Label x:Name="lvl_label" Content="1" HorizontalAlignment="Left" Height="25" Margin="664,54,0,0" VerticalAlignment="Top" Width="43"/>
 
     </Grid>
 </Window>

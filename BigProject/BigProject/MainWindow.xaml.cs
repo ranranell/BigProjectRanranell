@@ -20,10 +20,37 @@ namespace BigProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        int GlobalNumber = 1;
+        int Globalnumber1 = 0;
         public string[] items { get; set; }
         Unit unit;
-        int Token = 0;
+        //int Token = 0;
+        private int _token = 0;
+        public int Token
+        {
+            get { return _token; }
+            set
+            {
+                
+                _token = value;
+                
+            }
+        }
+
+        private int _lvl = 2;
+        public int Lvl
+        {
+            get { return _lvl; }
+            set
+            {
+                if (value > 99)
+                {
+                    _lvl = 99;
+                }
+                else
+                    _lvl = value;
+            }
+        }
 
         public MainWindow()
         {
@@ -140,5 +167,114 @@ namespace BigProject
             Token = Convert.ToInt32(_token);
         }
 
+        private void minus_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & unit.Strength > 0)
+            {
+                Token++;
+                unit.Strength -= 1;
+                unit.StartHealth();
+                unit.StartPDamage();
+                CreateUnit(unit);
+            }
+        }
+
+        private void minus_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & unit.Vitality > 0)
+            {
+                unit.Vitality -= 1;
+                unit.StartHealth();
+
+                Token++;
+                CreateUnit(unit);
+            }
+            
+        }
+
+        private void minus_Copy2_Click(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & unit.Dexterity > 0)
+            {
+                unit.Dexterity -= 1;
+                unit.StartCrtDamage();
+                unit.StartCrtChance();
+                unit.StartArmor();
+
+                Token++;
+                CreateUnit(unit);
+            }
+            
+        }
+
+        //private void minus_Copy3_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (unit != null & unit.Inteligence > 0)
+        //    {
+        //        unit.Inteligence -= 1;
+        //        unit.StartMDefense();
+        //        unit.StartMDamage();
+        //        unit.StartMana();
+
+        //        Token++;
+        //        CreateUnit(unit);
+        //    }
+        //}
+
+        private void minus_Copy3_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (unit != null & unit.Inteligence > 0)
+            {
+                unit.Inteligence -= 1;
+                unit.StartMDefense();
+                unit.StartMDamage();
+                unit.StartMana();
+
+                Token++;
+                CreateUnit(unit);
+            }
+        }
+
+        private void OneHundred_button_Click(object sender, RoutedEventArgs e)
+        {
+            int Info_TextBox = Convert.ToInt32(number__of__tokens.Text.ToString());
+            number__of__tokens.Text = (Info_TextBox + 100).ToString();
+            CheckNumberOfToken();
+        }
+
+        private void FiveHundred_button_Click(object sender, RoutedEventArgs e)
+        {
+            int Info_TextBox = Convert.ToInt32(number__of__tokens.Text.ToString());
+            number__of__tokens.Text = (Info_TextBox + 500).ToString();
+            CheckNumberOfToken();
+        }
+
+        private void OneThousand_button_Click(object sender, RoutedEventArgs e)
+        {
+            int Info_TextBox = Convert.ToInt32(number__of__tokens.Text.ToString());
+            number__of__tokens.Text = (Info_TextBox + 1000).ToString();
+            CheckNumberOfToken();
+        }
+
+        private void CheckNumberOfToken()
+        {
+
+            int NumberOfTokensInt = Convert.ToInt32(number__of__tokens.Text.ToString());
+
+            int NumberLvl = Globalnumber1 + (GlobalNumber) * 1000;
+
+            if (NumberOfTokensInt >= NumberLvl)
+            {
+                Globalnumber1 = NumberLvl;
+                number__of__tokens.Text = $"{0}";
+                Token += (GlobalNumber) * 1000;
+                numberTokens.Content = $"{Token}";
+                lvl_label.Content = $"{Lvl++}";
+                GlobalNumber += 1;
+            }
+
+
+
+        }
     }
 }
